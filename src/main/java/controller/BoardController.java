@@ -38,6 +38,7 @@ public class BoardController {
 	@PostMapping("/insert")
 	public void insertboard(@RequestBody BoardDto dto)
 	{
+		System.out.println(dto);
 		int k = mapper.insert(dto);
 		System.out.println(k);
 	}
