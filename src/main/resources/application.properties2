@@ -1,5 +1,5 @@
 spring.datasource.url=jdbc:mariadb://chjdb.cntocczavvox.ap-northeast-2.rds.amazonaws.com/chjdb
 spring.datasource.username=admin
-spring.datasource.password=직접입력
+spring.datasource.password=x1080615
 
 server.port=9001
