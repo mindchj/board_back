@@ -14,7 +14,10 @@ public interface BoardMapper {
 	@Select("select * from board")
 	List<BoardDto> select();
 	
-	@Insert("insert into board (writer, content, date) values (#{one.writer}, #{one.content}, current_timestamp)")
+	@Select("select * from board where sid = #{sid}")
+	BoardDto selectOne(@Param("sid") String sid);
+	
+	@Insert("insert into board (writer, content, password, date) values (#{one.writer}, #{one.content}, #{one.password}, current_timestamp)")
 	int insert(@Param("one") BoardDto one);
 	
 	@Update("update board set writer=#{one.writer}, content=#{one.content} where sid=#{one.sid}")
