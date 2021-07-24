@@ -16,6 +16,6 @@ public class BoardDto {
 	private String sid;
 	private String writer;
 	private String content;
-	@JsonFormat(pattern = "yyyy-MM-dd")
+	@JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss", timezone="Asia/Seoul")
 	private Date date;
 }

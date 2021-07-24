@@ -18,6 +18,7 @@ import com.fasterxml.jackson.databind.ser.std.StdKeySerializers.Default;
 
 import data.BoardDto;
 import data.BoardMapper;
+import data.ReturnDto;
 
 @CrossOrigin
 @RestController
@@ -36,11 +37,15 @@ public class BoardController {
 	}
 	
 	@PostMapping("/insert")
-	public void insertboard(@RequestBody BoardDto dto)
+	public ReturnDto insertboard(@RequestBody BoardDto dto)
 	{
 		System.out.println(dto);
 		int k = mapper.insert(dto);
 		System.out.println(k);
+		ReturnDto rdto = new ReturnDto();
+		rdto.setData(dto);
+		rdto.setStatus("success");
+		return rdto;
 	}
 	
 	@PutMapping("/update")
