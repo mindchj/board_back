@@ -17,6 +17,15 @@ public interface BoardMapper {
 	@Select("select * from board where sid = #{sid}")
 	BoardDto selectOne(@Param("sid") String sid);
 	
+	@Select("select count(*) from member where id = #{id}")
+	int idcheck(@Param("id") String id);
+	
+	@Select("select * from member where id = #{id}")
+	MemberDto selectMember(@Param("id") String id);
+	
+	@Insert("insert into member (id, password, intro, date) values (#{one.id}, #{one.password}, #{one.intro}, current_timestamp)")
+	int insertMember(@Param("one") MemberDto one);
+	
 	@Insert("insert into board (writer, content, password, date) values (#{one.writer}, #{one.content}, #{one.password}, current_timestamp)")
 	int insert(@Param("one") BoardDto one);
 	

@@ -18,6 +18,7 @@ import com.fasterxml.jackson.databind.ser.std.StdKeySerializers.Default;
 
 import data.BoardDto;
 import data.BoardMapper;
+import data.MemberDto;
 import data.ReturnDto;
 
 @CrossOrigin
@@ -34,6 +35,28 @@ public class BoardController {
 		List<BoardDto> list = mapper.select();
 		System.out.println(list);
 		return list;
+	}
+	
+	@GetMapping("/idcheck/{id}")
+	public int idcheck(@PathVariable String id)
+	{
+		return mapper.idcheck(id);
+	}
+	
+	@PostMapping("/login")
+	public MemberDto login(@RequestBody MemberDto clientDto)
+	{
+		MemberDto serverDto = mapper.selectMember(clientDto.getId());
+		if(serverDto.getPassword().equals(clientDto.getPassword()))
+			return serverDto;
+		else
+			return null;
+	}
+	
+	@PostMapping("/signup")
+	public void insertmember(@RequestBody MemberDto dto)
+	{
+		mapper.insertMember(dto);
 	}
 	
 	@PostMapping("/insert")
