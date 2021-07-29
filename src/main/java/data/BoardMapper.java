@@ -35,4 +35,7 @@ public interface BoardMapper {
 	@Delete("delete from board where sid=#{sid}")
 	int delete(@Param("sid") String sid);
 	
+	@Insert("insert into visit_count (ip_address) values (#{ip})")
+	int ip(@Param("ip") String ip);
+	
 }
